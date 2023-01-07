@@ -1,7 +1,7 @@
 from telethon import TelegramClient as tg
 from telethon.sessions import StringSession
 from telethon import events, types
-from os important getenv
+from os import getenv
 import traceback, sys, io, asyncio, logging 
 from pprint import pprint 
 
