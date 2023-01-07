@@ -60,7 +60,7 @@ async def eval(e):
         with io.BytesIO(evaluation.encode()) as finale_b:
             finale_b.name = "eval.txt"
             return await e.respond(f"```{a}```", file=finale_b)
-    await eor(e, final_output)
+    await e.edit(final_output)
 
 
 async def aexec(code, event):
@@ -75,7 +75,7 @@ async def aexec(code, event):
     return await locals()["__aexec"](event, event.client)
 
 
-@b.on(events.NewMessage(pattern="(bash|exec)"))
+@b.on(events.NewMessage(outgoing=True, pattern="^.sh (.*?)"))
 async def __exec(e):
     try:
         cmd = e.text.split(maxsplit=1)[1]
