@@ -25,6 +25,8 @@ except:
 
 @b.on(events.NewMessage(outgoing=True, pattern="^.eval (.*?)"))
 async def eval(e):
+    if e.text.startswith("/"):
+       return 
     try:
         a = e.text.split(maxsplit=1)[1]
     except IndexError:
